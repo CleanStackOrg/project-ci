@@ -1,2 +1,2 @@
-# project-ci
+# Project CI
 New Build Pipeline System for Continuous Integration
