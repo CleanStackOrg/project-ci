@@ -1,9 +1,7 @@
-CI
-======
- 
-modules:
+# Project CI
+New Build Pipeline System for Continuous Integration
 
-plan:
+Planned modules:
 - pipeline (stages, dsl)
 - plan (trello, burndown)
 - specs (cucumber editor)
