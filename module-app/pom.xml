@@ -1,0 +1,67 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.cleanstack.ci</groupId>
+    <version>0.0.1-SNAPSHOT</version>
+    <artifactId>ci</artifactId>
+  </parent>
+  <artifactId>ci-app</artifactId>
+  <packaging>war</packaging>
+
+  <profiles>
+
+    <profile>
+      <id>fullstack</id>
+      <dependencies>
+        <dependency>
+          <artifactId>ci-deploy</artifactId>
+          <groupId>${project.groupId}</groupId>
+          <version>${project.version}</version>
+        </dependency>
+      </dependencies>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+    </profile>
+
+    <profile>
+      <id>project</id>
+    </profile>
+
+    <profile>
+      <id>java</id>
+      <dependencies>
+        <dependency>
+          <artifactId>ci-deploy</artifactId>
+          <groupId>${project.groupId}</groupId>
+          <version>${project.version}</version>
+        </dependency>
+      </dependencies>
+    </profile>
+
+    <profile>
+      <id>web</id>
+      <dependencies>
+        <dependency>
+          <artifactId>ci-deploy</artifactId>
+          <groupId>${project.groupId}</groupId>
+          <version>${project.version}</version>
+        </dependency>
+      </dependencies>
+    </profile>
+
+    <profile>
+      <id>net</id>
+      <dependencies>
+        <dependency>
+          <artifactId>ci-deploy</artifactId>
+          <groupId>${project.groupId}</groupId>
+          <version>${project.version}</version>
+        </dependency>
+      </dependencies>
+    </profile>
+
+  </profiles>
+</project>

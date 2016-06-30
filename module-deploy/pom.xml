@@ -13,16 +13,19 @@
   <properties>
     <mainClass>org.cleanstack.ci.deploy.App</mainClass>
   </properties>
+  
   <profiles>
+
     <profile>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
       <id>test</id>
       <properties>
         <profile.id>test</profile.id>
       </properties>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
     </profile>
+
     <profile>
       <id>dev</id>
       <properties>
@@ -111,15 +114,6 @@
       </testResource>
     </testResources>
     <plugins>
-      <!-- Set a compiler level -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>${project.build.jdkVersion}</source>
-          <target>${project.build.jdkVersion}</target>
-        </configuration>
-      </plugin>
       <!-- Make this jar executable -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
