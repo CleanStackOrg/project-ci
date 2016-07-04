@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.cleanstack.ci</groupId>
-  <artifactId>ci</artifactId>
+  <artifactId>project-ci</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
@@ -13,16 +13,19 @@
   </properties>
 
   <modules>
-
-    <!-- PLUGINS -->
+  
+	<!-- CORE -->
     <module>module-core</module>
     <module>module-core-ui</module>
+
+    <!-- PLUGINS -->
     <!-- <module>module-project</module> -->
     <!-- <module>module-cucumber</module> -->
     <!-- <module>module-pipeline</module> -->
     <!-- <module>module-build</module> -->
     <!-- <module>module-deliver</module> -->
     <module>module-deploy</module>
+    <module>module-deploy-webui</module>
 
     <!-- APP -->
     <module>module-app</module>

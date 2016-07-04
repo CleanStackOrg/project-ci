@@ -5,9 +5,9 @@
   <parent>
     <groupId>org.cleanstack.ci</groupId>
     <version>0.0.1-SNAPSHOT</version>
-    <artifactId>ci</artifactId>
+    <artifactId>project-ci</artifactId>
   </parent>
-  <artifactId>ci-app</artifactId>
+  <artifactId>project-ci-app</artifactId>
   <packaging>war</packaging>
 
   <profiles>
@@ -16,7 +16,12 @@
       <id>fullstack</id>
       <dependencies>
         <dependency>
-          <artifactId>ci-deploy</artifactId>
+          <artifactId>project-ci-deploy</artifactId>
+          <groupId>${project.groupId}</groupId>
+          <version>${project.version}</version>
+        </dependency>
+        <dependency>
+          <artifactId>project-ci-deploy-webui</artifactId>
           <groupId>${project.groupId}</groupId>
           <version>${project.version}</version>
         </dependency>
@@ -25,7 +30,21 @@
         <activeByDefault>true</activeByDefault>
       </activation>
     </profile>
-
+    
+    <profile>
+      <id>fullstack-headless</id>
+      <dependencies>
+        <dependency>
+          <artifactId>project-ci-deploy</artifactId>
+          <groupId>${project.groupId}</groupId>
+          <version>${project.version}</version>
+        </dependency>
+      </dependencies>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+    </profile>
+    
     <profile>
       <id>project</id>
     </profile>
@@ -34,7 +53,7 @@
       <id>java</id>
       <dependencies>
         <dependency>
-          <artifactId>ci-deploy</artifactId>
+          <artifactId>project-ci-deploy</artifactId>
           <groupId>${project.groupId}</groupId>
           <version>${project.version}</version>
         </dependency>
@@ -45,7 +64,7 @@
       <id>web</id>
       <dependencies>
         <dependency>
-          <artifactId>ci-deploy</artifactId>
+          <artifactId>project-ci-deploy</artifactId>
           <groupId>${project.groupId}</groupId>
           <version>${project.version}</version>
         </dependency>
@@ -56,7 +75,7 @@
       <id>net</id>
       <dependencies>
         <dependency>
-          <artifactId>ci-deploy</artifactId>
+          <artifactId>project-ci-deploy</artifactId>
           <groupId>${project.groupId}</groupId>
           <version>${project.version}</version>
         </dependency>
@@ -64,4 +83,27 @@
     </profile>
 
   </profiles>
+  
+  <dependencies>
+	<dependency>
+  		<artifactId>project-ci-core</artifactId>
+        <groupId>${project.groupId}</groupId>
+        <version>${project.version}</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>junit</groupId>
+	    <artifactId>junit</artifactId>
+	    <version>4.12</version>
+	    <scope>test</scope>
+	</dependency>
+	<dependency>
+	    <groupId>org.assertj</groupId>
+	    <artifactId>assertj-core</artifactId>
+	    <version>3.5.1</version>
+	    <scope>test</scope>
+	</dependency>
+	
+  </dependencies>
+  
 </project>
