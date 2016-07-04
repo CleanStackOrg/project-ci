@@ -46,8 +46,9 @@
                   <type>jar</type>
 
                   <overWrite>true</overWrite>
-                  <outputDirectory>${project.basedir}/src/main/resources/</outputDirectory>
+                  <outputDirectory>${project.basedir}/target/unpacked_webjars</outputDirectory>
                   <includes>**/*.css,**/*.js</includes>
+                  <excludes>**/*test.class</excludes>
                 </artifactItem>
               </artifactItems>
             </configuration>
@@ -62,7 +63,7 @@
         <version>1.7.0.1.1</version>
         <configuration>
           <sourceDirectory>${project.basedir}/src/main/less</sourceDirectory>
-          <outputDirectory>${project.basedir}/src/main/resources/META-INF/resources/webjars/${project.artifactId}/${project.version}</outputDirectory>
+          <outputDirectory>${project.basedir}/target/classes/META-INF/resources/webjars/${project.artifactId}/${project.version}</outputDirectory>
           <compress>true</compress>
           <includes>
             <include>main.less</include>
