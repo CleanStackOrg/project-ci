@@ -22,7 +22,12 @@
     <!-- <module>module-project</module> -->
     <!-- <module>module-cucumber</module> -->
     <!-- <module>module-pipeline</module> -->
-    <!-- <module>module-build</module> -->
+    <module>module-build</module>
+    <module>module-build-webui</module>
+    <!-- <module>module-build-java</module> -->
+    <!-- <module>module-build-ant</module> -->
+    <!-- <module>module-build-maven</module> -->
+    <module>module-build-unity3d</module>
     <!-- <module>module-deliver</module> -->
     <module>module-deploy</module>
     <module>module-deploy-webui</module>
