@@ -17,6 +17,7 @@
 	<!-- CORE -->
     <module>module-core</module>
     <module>module-core-webui</module>
+    <module>module-theme-mdl</module>
 
     <!-- PLUGINS -->
     <!-- <module>module-project</module> -->

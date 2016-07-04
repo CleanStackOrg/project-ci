@@ -9,32 +9,10 @@
   </parent>
   <artifactId>project-ci-core-webui</artifactId>
   <packaging>jar</packaging>
-
+  
   <build>
     <plugins>
-
-      <!-- CSS -->
-      <plugin>
-	    <groupId>org.lesscss</groupId>
-	    <artifactId>lesscss-maven-plugin</artifactId>
-	    <version>1.7.0.1.1</version>
-	    <configuration>
-	        <sourceDirectory>${project.basedir}/src/main/webapp/less</sourceDirectory>
-	        <outputDirectory>${project.basedir}/src/main/resources/META-INF/resources/webjars/${project.artifactId}/${project.version}</outputDirectory>
-	        <compress>true</compress>
-	        <includes>
-	            <include>main.less</include>
-	        </includes>
-	    </configuration>
-	    <executions>
-	        <execution>
-	            <goals>
-	                <goal>compile</goal>
-	            </goals>
-	        </execution>
-	    </executions>
-      </plugin>
-
+    
       <!-- HTML TO JS (BUILD) -->
       <plugin>
         <groupId>com.keithbranton.mojo</groupId>
