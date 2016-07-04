@@ -2,10 +2,18 @@
 
 @import (less) "../../../target/unpacked_webjars/META-INF/resources/webjars/material-design-lite/1.1.3/material.css";
 
+body {
+  padding: 20px;
+  background: #fafafa;
+  position: relative;
+}
+
 h1 {
   color: @base;
 }
 
-button {
-  &:extend(.mdl-button);
-}
+.ci-button 			{ &:extend(.mdl-button); }
+.ci-button-raised 	{ &:extend(.mdl-button--raised); }
+
+.ci-button[disabled][disabled] 			{ &:extend(.mdl-button[disabled][disabled]); }
+.ci-button-raised[disabled][disabled] 	{ &:extend(.mdl-button--raised[disabled][disabled]); }
