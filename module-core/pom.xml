@@ -5,9 +5,9 @@
   <parent>
     <groupId>org.cleanstack.ci</groupId>
     <version>0.0.1-SNAPSHOT</version>
-    <artifactId>ci</artifactId>
+    <artifactId>project-ci</artifactId>
   </parent>
-  <artifactId>ci-core</artifactId>
+  <artifactId>project-ci-core</artifactId>
   <packaging>jar</packaging>
 
 </project>
