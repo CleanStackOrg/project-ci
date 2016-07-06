@@ -10,30 +10,37 @@
 </head>
 <body>
 
-  <h1>CI</h1>
-
-  <h3>Responsive test</h3>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title">PROJECT CI</span>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation. We hide it in small screens. -->
+      <nav class="mdl-navigation mdl-layout--large-screen-only">
+        <a class="mdl-navigation__link" href="">Login</a>
+      </nav>
+    </div>
+  </header>
+  <main class="mdl-layout__content">
+    <div class="page-content">
+    <!-- Your content goes here -->
+    
   <div class="mdl-grid">
-    
-    <div class="mdl-cell mdl-cell--4-col mdl-cell--12-col-tablet">
-      Native:
-      <button>OK</button>
-      <button disabled>disabled</button>
+    <div class="mdl-cell mdl-cell--12-col">
+      <h3>Dashboard</h3>
     </div>
-    
-    <div class="mdl-cell mdl-cell--4-col mdl-cell--12-col-tablet">
-      Basic:
-      <button class="ci-button">OK</button>
-      <button class="ci-button" disabled>disabled</button>
-    </div>
-    
-    <div class="mdl-cell mdl-cell--4-col mdl-cell--12-col-tablet">
-      Raised:
+    <div class="mdl-cell mdl-cell--12-col">
+      Test:
       <button class="ci-button ci-button-raised">OK</button>
       <button class="ci-button ci-button-raised" disabled>disabled</button>
     </div>
-    
   </div>
+    
+    </div>
+  </main>
+</div>
 
 </body>
 </html>
