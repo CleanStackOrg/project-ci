@@ -10,4 +10,22 @@
   <artifactId>project-ci-core</artifactId>
   <packaging>jar</packaging>
 
+  <dependencies>
+  
+    <!-- TEST -->	
+	<dependency>
+	    <groupId>junit</groupId>
+	    <artifactId>junit</artifactId>
+	    <version>4.12</version>
+	    <scope>test</scope>
+	</dependency>
+	<dependency>
+	    <groupId>org.assertj</groupId>
+	    <artifactId>assertj-core</artifactId>
+	    <version>3.5.1</version>
+	    <scope>test</scope>
+	</dependency>
+  
+  </dependencies>
+
 </project>
