@@ -10,29 +10,6 @@
   <artifactId>project-ci-deploy-api</artifactId>
   <packaging>jar</packaging>
 
-  <properties>
-    <mainClass>org.cleanstack.ci.deploy.App</mainClass>
-  </properties>
-  
-  <profiles>
-
-    <profile>
-      <id>test</id>
-      <properties>
-        <profile.id>test</profile.id>
-      </properties>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
-    </profile>
-
-    <profile>
-      <id>dev</id>
-      <properties>
-        <profile.id>dev</profile.id>
-      </properties>
-    </profile>
-  </profiles>
   <dependencies>
 
 	<dependency>
@@ -113,66 +90,4 @@
     </dependency>
 
   </dependencies>
-  <build>
-    <testResources>
-      <testResource>
-        <directory>src/test/resources_${profile.id}</directory>
-      </testResource>
-    </testResources>
-    <plugins>
-      <!-- Make this jar executable -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <configuration>
-          <archive>
-            <manifest>
-              <mainClass>${mainClass}</mainClass>
-            </manifest>
-          </archive>
-        </configuration>
-      </plugin>
-      <!-- Includes the runtime dependencies -->
-      <plugin>
-        <artifactId>maven-assembly-plugin</artifactId>
-        <configuration>
-          <archive>
-            <manifest>
-              <mainClass>${mainClass}</mainClass>
-            </manifest>
-          </archive>
-          <descriptorRefs>
-            <descriptorRef>jar-with-dependencies</descriptorRef>
-          </descriptorRefs>
-        </configuration>
-      </plugin>
-      <!-- exec via maven -->
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>exec-maven-plugin</artifactId>
-        <version>1.4.0</version>
-        <executions>
-          <execution>
-            <phase>deploy</phase>
-            <goals>
-              <goal>java</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <mainClass>${mainClass}</mainClass>
-        </configuration>
-      </plugin>
-    </plugins>
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <artifactId>maven-deploy-plugin</artifactId>
-          <configuration>
-            <skip>true</skip>
-          </configuration>
-        </plugin>
-      </plugins>
-    </pluginManagement>
-  </build>
 </project>
