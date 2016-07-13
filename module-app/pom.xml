@@ -12,36 +12,20 @@
   
   <properties>
     <material-design-lite.version>1.1.3</material-design-lite.version>
-  </properties>
-  
-  <profiles>
+  </properties>  
+<!--   <profiles>
 
     <profile>
       <id>fullstack</id>
       <dependencies>
-      	<!-- CORE -->
-        <dependency>
-          <artifactId>project-ci-core-webui</artifactId>
-          <groupId>${project.groupId}</groupId>
-          <version>${project.version}</version>
-        </dependency>
-      	<!-- THEME -->
-        <dependency>
-          <artifactId>project-ci-theme-mdl</artifactId>
-          <groupId>${project.groupId}</groupId>
-          <version>${project.version}</version>
-        </dependency>
-        <!-- MODULES -->
-        <dependency>
-          <artifactId>project-ci-deploy</artifactId>
-          <groupId>${project.groupId}</groupId>
-          <version>${project.version}</version>
-        </dependency>
-        <dependency>
-          <artifactId>project-ci-deploy-webui</artifactId>
-          <groupId>${project.groupId}</groupId>
-          <version>${project.version}</version>
-        </dependency>
+      	CORE
+        <dependency><artifactId>project-ci-core</artifactId><groupId>${project.groupId}</groupId><version>${project.version}</version></dependency>
+        <dependency><artifactId>project-ci-core-webui</artifactId><groupId>${project.groupId}</groupId><version>${project.version}</version></dependency>
+      	THEME
+        <dependency><artifactId>project-ci-theme-mdl</artifactId><groupId>${project.groupId}</groupId><version>${project.version}</version></dependency>
+        MODULES
+        <dependency><artifactId>project-ci-deploy</artifactId><groupId>${project.groupId}</groupId><version>${project.version}</version></dependency>
+        <dependency><artifactId>project-ci-deploy-webui</artifactId><groupId>${project.groupId}</groupId><version>${project.version}</version></dependency>
       </dependencies>
       <activation>
         <activeByDefault>true</activeByDefault>
@@ -51,15 +35,9 @@
     <profile>
       <id>fullstack-headless</id>
       <dependencies>
-        <dependency>
-          <artifactId>project-ci-deploy</artifactId>
-          <groupId>${project.groupId}</groupId>
-          <version>${project.version}</version>
-        </dependency>
+        <dependency><artifactId>project-ci-core</artifactId><groupId>${project.groupId}</groupId><version>${project.version}</version></dependency>
+        <dependency><artifactId>project-ci-deploy</artifactId><groupId>${project.groupId}</groupId><version>${project.version}</version></dependency>
       </dependencies>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
     </profile>
     
     <profile>
@@ -69,45 +47,42 @@
     <profile>
       <id>java</id>
       <dependencies>
-        <dependency>
-          <artifactId>project-ci-deploy</artifactId>
-          <groupId>${project.groupId}</groupId>
-          <version>${project.version}</version>
-        </dependency>
+        <dependency><artifactId>project-ci-deploy</artifactId><groupId>${project.groupId}</groupId><version>${project.version}</version></dependency>
       </dependencies>
     </profile>
 
     <profile>
       <id>web</id>
       <dependencies>
-        <dependency>
-          <artifactId>project-ci-deploy</artifactId>
-          <groupId>${project.groupId}</groupId>
-          <version>${project.version}</version>
-        </dependency>
+        <dependency><artifactId>project-ci-deploy</artifactId><groupId>${project.groupId}</groupId><version>${project.version}</version></dependency>
       </dependencies>
     </profile>
 
     <profile>
       <id>net</id>
       <dependencies>
-        <dependency>
-          <artifactId>project-ci-deploy</artifactId>
-          <groupId>${project.groupId}</groupId>
-          <version>${project.version}</version>
-        </dependency>
+        <dependency><artifactId>project-ci-deploy</artifactId><groupId>${project.groupId}</groupId><version>${project.version}</version></dependency>
       </dependencies>
     </profile>
 
   </profiles>
-  
+ -->  
   <dependencies>
-	<dependency>
-  		<artifactId>project-ci-core</artifactId>
-        <groupId>${project.groupId}</groupId>
-        <version>${project.version}</version>
-	</dependency>
-	
+        <!-- CORE -->
+        <dependency><artifactId>project-ci-core</artifactId><groupId>org.cleanstack.ci</groupId><version>0.0.1-SNAPSHOT</version></dependency>
+        <dependency><artifactId>project-ci-core-webui</artifactId><groupId>${project.groupId}</groupId><version>${project.version}</version></dependency>
+        <!-- THEME -->
+        <dependency><artifactId>project-ci-theme-mdl</artifactId><groupId>${project.groupId}</groupId><version>${project.version}</version></dependency>
+        <!-- MODULES -->
+        <dependency><artifactId>project-ci-deploy</artifactId><groupId>${project.groupId}</groupId><version>${project.version}</version></dependency>
+        <dependency><artifactId>project-ci-deploy-webui</artifactId><groupId>${project.groupId}</groupId><version>${project.version}</version></dependency>
+
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>3.0.1</version>
+    </dependency>
+    <!-- TEST -->	
 	<dependency>
 	    <groupId>junit</groupId>
 	    <artifactId>junit</artifactId>
@@ -137,7 +112,6 @@
         <targetPath>${project.basedir}/target/m2e-wtp/web-resources</targetPath>
         <includes>
           <include>*.html</include>
-          <include>WEB-INF/web.xml</include>
         </includes>
       </resource>
     </resources>
@@ -154,7 +128,6 @@
               <filtering>true</filtering>
               <includes>
                 <include>*.html</include>
-                <include>WEB-INF/web.xml</include>
               </includes>
             </resource>
           </webResources>

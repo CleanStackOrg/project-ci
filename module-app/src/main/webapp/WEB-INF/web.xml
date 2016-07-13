@@ -5,6 +5,11 @@
          version="3.1">
          
   <servlet>
+    <servlet-name>APP</servlet-name>
+    <servlet-class>org.cleanstack.ci.AppServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet>
     <servlet-name>WEBJARS</servlet-name>
     <servlet-class>org.webjars.servlet.WebjarsServlet</servlet-class>
     <init-param>
@@ -13,6 +18,11 @@
     </init-param>
     <load-on-startup>2</load-on-startup>
   </servlet>
+
+  <servlet-mapping>
+    <servlet-name>APP</servlet-name>
+    <url-pattern>/api/*</url-pattern>
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>WEBJARS</servlet-name>
     <url-pattern>/webjars/*</url-pattern>
