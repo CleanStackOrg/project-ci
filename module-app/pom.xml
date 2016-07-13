@@ -10,7 +10,9 @@
   <artifactId>project-ci-app-bundler</artifactId>
   <packaging>pom</packaging>
   
-  <modules><module>module-app</module></modules>
+  <modules>
+    <module>module-app</module>
+  </modules>
   
   <profiles>
 

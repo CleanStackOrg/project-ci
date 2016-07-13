@@ -7,7 +7,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <artifactId>project-ci</artifactId>
   </parent>
-  <artifactId>project-ci-deploy</artifactId>
+  <artifactId>project-ci-deploy-parent</artifactId>
   <packaging>pom</packaging>
 
   <modules>
