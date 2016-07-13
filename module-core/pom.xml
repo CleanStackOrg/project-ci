@@ -7,11 +7,11 @@
     <version>0.0.1-SNAPSHOT</version>
     <artifactId>project-ci</artifactId>
   </parent>
-  <artifactId>project-ci-core</artifactId>
+  <artifactId>project-ci-core-parent</artifactId>
   <packaging>pom</packaging>
 
   <modules>
-    <module>module-api</module>
+    <module>module-core</module>
     <module>module-webui</module>
   </modules>
 
