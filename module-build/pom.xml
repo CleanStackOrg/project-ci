@@ -8,6 +8,11 @@
     <artifactId>project-ci</artifactId>
   </parent>
   <artifactId>project-ci-build</artifactId>
-  <packaging>jar</packaging>
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>module-api</module>
+    <module>module-webui</module>
+  </modules>
 
 </project>
