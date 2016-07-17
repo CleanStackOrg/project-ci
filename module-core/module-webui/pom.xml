@@ -9,10 +9,20 @@
   </parent>
   <artifactId>project-ci-core-webui</artifactId>
   <packaging>jar</packaging>
-  
+
+  <dependencies>
+
+    <dependency>
+      <artifactId>project-ci-core</artifactId>
+      <groupId>${project.groupId}</groupId>
+      <version>${project.version}</version>
+    </dependency>
+
+  </dependencies>
+
   <build>
     <plugins>
-    
+
       <!-- HTML TO JS (BUILD) -->
       <plugin>
         <groupId>com.keithbranton.mojo</groupId>
