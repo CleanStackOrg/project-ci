@@ -3,12 +3,12 @@ package org.cleanstack.ci.build;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 
-import org.cleanstack.ci.spi.Extension;
+import org.cleanstack.ci.spi.UIExtension;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
 
-public class BuildUIExtension extends Extension {
+public class BuildUIExtension extends UIExtension {
 
   public String getId() {
     return "build-webui";

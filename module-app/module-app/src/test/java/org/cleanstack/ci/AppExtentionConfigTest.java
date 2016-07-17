@@ -11,7 +11,7 @@ import org.junit.Test;
 public class AppExtentionConfigTest {
 
 	@Test
-	public void test_init() {
+	public void test_init_api() {
 		AppExtensionConfig classTotest = new AppExtensionConfig();
 		Map<String, Extension> commands = classTotest.extensions;
 		assertThat(commands) //
@@ -22,9 +22,8 @@ public class AppExtentionConfigTest {
 		//
 		assertThat(commands) //
 				.isNotEmpty() //
-				.hasSize(2) //
-				.containsKeys("build-api","build-webui");
-
+				.hasSize(1) //
+				.containsKeys("build-api");
 	}
 
 	@Test

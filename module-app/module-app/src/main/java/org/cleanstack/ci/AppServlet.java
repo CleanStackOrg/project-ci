@@ -10,6 +10,9 @@ public class AppServlet extends HttpServlet {
   @Override
   public void init() throws ServletException {
     super.init();
+    
+    System.out.println("hi it's app servlet!");
+    
     App.main(null);
   }
   

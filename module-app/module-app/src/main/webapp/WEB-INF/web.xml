@@ -5,9 +5,14 @@
          version="3.1">
          
   <servlet>
-    <servlet-name>APP</servlet-name>
+    <servlet-name>API</servlet-name>
     <servlet-class>org.cleanstack.ci.AppServlet</servlet-class>
     <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>WEBUI</servlet-name>
+    <servlet-class>org.cleanstack.ci.UIExtensionServlet</servlet-class>
+    <load-on-startup>2</load-on-startup>
   </servlet>
   <servlet>
     <servlet-name>WEBJARS</servlet-name>
@@ -16,12 +21,16 @@
       <param-name>disableCache</param-name>
       <param-value>${webjars.disablecache}</param-value>
     </init-param>
-    <load-on-startup>2</load-on-startup>
+    <load-on-startup>3</load-on-startup>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>APP</servlet-name>
+    <servlet-name>API</servlet-name>
     <url-pattern>/api/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>WEBUI</servlet-name>
+    <url-pattern>/appjs/*</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>WEBJARS</servlet-name>
