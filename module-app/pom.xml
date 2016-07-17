@@ -19,11 +19,13 @@
     <profile>
       <id>fullstack</id>
       <dependencies>
+        <dependency><artifactId>project-ci-build-api</artifactId><groupId>${project.groupId}</groupId><version>${project.version}</version></dependency>
         <dependency><artifactId>project-ci-core-api</artifactId><groupId>${project.groupId}</groupId><version>${project.version}</version></dependency>
         <dependency><artifactId>project-ci-deploy-api</artifactId><groupId>${project.groupId}</groupId><version>${project.version}</version></dependency>
 
         <dependency><artifactId>project-ci-theme-mdl</artifactId><groupId>${project.groupId}</groupId><version>${project.version}</version></dependency>
         <dependency><artifactId>project-ci-core-webui</artifactId><groupId>${project.groupId}</groupId><version>${project.version}</version></dependency>
+        <dependency><artifactId>project-ci-build-webui</artifactId><groupId>${project.groupId}</groupId><version>${project.version}</version></dependency>
         <dependency><artifactId>project-ci-deploy-webui</artifactId><groupId>${project.groupId}</groupId><version>${project.version}</version></dependency>
       </dependencies>
       <activation>

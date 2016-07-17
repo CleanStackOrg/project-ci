@@ -15,14 +15,14 @@ public class AppExtentionConfigTest {
 		Map<String, Extension> commands = classTotest.extensions;
 		assertThat(commands) //
 				.isEmpty();
-
+		//
 		classTotest //
 				.initCommands();
-
+		//
 		assertThat(commands) //
 				.isNotEmpty() //
-				.hasSize(2) //
-				.containsKeys("deploy", "deploy-webui");
+				.hasSize(4) //
+				.containsKeys("build-api","build-webui","deploy-api", "deploy-webui");
 
 	}
 
@@ -30,12 +30,12 @@ public class AppExtentionConfigTest {
 	public void test_extension() {
 		AppExtensionConfig app = new AppExtensionConfig();
 		app.initCommands();
-
-		Extension classTotest = app.extensions.get("deploy");
+		//
+		Extension classTotest = app.extensions.get("deploy-api");
 		String res = classTotest.init();
-		
+		//
 		assertThat(res) //
-			.isEqualTo("hello");
+			.isEqualTo("deploy-api init");
 	}
 
 }

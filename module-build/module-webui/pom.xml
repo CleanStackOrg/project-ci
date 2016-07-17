@@ -10,4 +10,14 @@
   <artifactId>project-ci-build-webui</artifactId>
   <packaging>jar</packaging>
 
+  <dependencies>
+
+    <dependency>
+      <artifactId>project-ci-core</artifactId>
+      <groupId>${project.groupId}</groupId>
+      <version>${project.version}</version>
+    </dependency>
+
+  </dependencies>
+
 </project>
