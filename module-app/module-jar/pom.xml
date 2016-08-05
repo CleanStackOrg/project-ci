@@ -5,32 +5,16 @@
   <parent>
     <groupId>org.cleanstack.ci</groupId>
     <version>0.0.1-SNAPSHOT</version>
-    <artifactId>project-ci-app-bundler</artifactId>
+    <artifactId>project-ci-app</artifactId>
   </parent>
-  <artifactId>project-ci-app</artifactId>
-  <packaging>war</packaging>
+  <artifactId>project-ci-app-jar</artifactId>
+  <packaging>jar</packaging>
 
   <properties>
-    <!-- WEBAPP -->
-    <material-design-lite.version>1.1.3</material-design-lite.version>
-    <!-- APP -->
     <mainClass>org.cleanstack.ci.deploy.App</mainClass>
   </properties>
   <dependencies>
 
-    <!-- WEBAPP -->
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
-      <version>3.0.1</version>
-    </dependency>
-    <dependency>
-      <groupId>org.webjars</groupId>
-      <artifactId>webjars-servlet-2.x</artifactId>
-      <version>1.5</version>
-    </dependency>
-
-    <!-- TEST -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -44,45 +28,14 @@
       <scope>test</scope>
     </dependency>
 
-
   </dependencies>
   <build>
-    <resources>
-      <!-- WEBAPP: REPLACE KEYS IN FILES (ECLIPSE IDE) -->
-      <resource>
-        <directory>src/main/webapp</directory>
-        <filtering>true</filtering>
-        <targetPath>${project.basedir}/target/m2e-wtp/web-resources</targetPath>
-        <includes>
-          <include>*.html</include>
-        </includes>
-      </resource>
-    </resources>
     <plugins>
-      <!-- WEBAPP: REPLACE KEYS IN FILES (BUILD) -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-war-plugin</artifactId>
-        <version>2.6</version>
-        <configuration>
-          <webResources>
-            <resource>
-              <directory>src/main/webapp</directory>
-              <filtering>true</filtering>
-              <includes>
-                <include>*.html</include>
-              </includes>
-            </resource>
-          </webResources>
-        </configuration>
-      </plugin>
-
-
       <!-- APP: Make this jar executable -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
-        <version>2.2.6</version>
+        <version>3.0.2</version>
         <configuration>
           <archive>
             <manifest>
@@ -122,8 +75,6 @@
           <mainClass>${mainClass}</mainClass>
         </configuration>
       </plugin>
-
-
     </plugins>
   </build>
 </project>

@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.http.HttpStatus;
 import org.cleanstack.ci.spi.UIExtension;
-import org.cleanstack.ci.spi.UIExtension;
 
 public class UIExtensionServlet extends HttpServlet {
 
@@ -58,14 +57,14 @@ public class UIExtensionServlet extends HttpServlet {
     
     System.out.println("hi it's webui extension servlet!");
     
-    // TODO serve webui(s)
     initCommands();
   }
   
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//    super.doGet(req, resp);
     resp.setStatus(HttpStatus.SC_ACCEPTED);
+    // TODO build modules' js aggregate
+    // set content
   }
   
 }

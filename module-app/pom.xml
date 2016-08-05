@@ -7,11 +7,12 @@
     <version>0.0.1-SNAPSHOT</version>
     <artifactId>project-ci</artifactId>
   </parent>
-  <artifactId>project-ci-app-bundler</artifactId>
+  <artifactId>project-ci-app</artifactId>
   <packaging>pom</packaging>
   
   <modules>
-    <module>module-app</module>
+    <module>module-jar</module>
+    <module>module-war</module>
   </modules>
   
   <profiles>
