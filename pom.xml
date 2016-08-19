@@ -16,21 +16,23 @@
 
     <!-- CORE -->
     <module>module-core</module>
-    <module>module-theme</module>
-    <module>module-build</module>
-    <!-- <module>module-deliver</module> -->
-    <module>module-deploy</module>
-    <!-- <module>module-pipeline</module> -->
+    <module>module-theme-mdl</module>
 
-    <!-- PLUGINS -->
-    <!-- <module>module-project</module> -->
+    <!-- COMPONENTS -->
+    <module>module-cli</module>
+    <module>module-ansible-emulator</module>
+    <!-- <module>module-ansible</module> -->
+    <!-- <module>module-java</module> -->
+    <!-- <module>module-maven</module> -->
+    <!-- <module>module-pipeline</module> -->
     <!-- <module>module-cucumber</module> -->
-    <!-- <module>module-build-java</module> -->
-    <!-- <module>module-build-ant</module> -->
-    <!-- <module>module-build-maven</module> -->
-    <module>module-build-unity3d</module>
+    <!-- <module>module-unity3d</module> -->
+    <!-- <module>module-project</module> -->
+    <!-- <module>module-artifact</module> -->
+    <!-- <module>module-ant</module> -->
 
     <!-- APP -->
+    <module>module-app-components</module>
     <module>module-app</module>
   </modules>
   <dependencies>
@@ -61,5 +63,4 @@
       </plugin>
     </plugins>
   </build>
-
 </project>

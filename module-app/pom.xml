@@ -8,64 +8,114 @@
     <artifactId>project-ci</artifactId>
   </parent>
   <artifactId>project-ci-app</artifactId>
-  <packaging>pom</packaging>
-  
-  <modules>
-    <module>module-jar</module>
-    <module>module-war</module>
-  </modules>
-  
-  <profiles>
+  <packaging>war</packaging>
 
-    <profile>
-      <id>fullstack</id>
-      <dependencies>
-        <dependency><artifactId>project-ci-build-api</artifactId><groupId>${project.groupId}</groupId><version>${project.version}</version></dependency>
-        <dependency><artifactId>project-ci-core-api</artifactId><groupId>${project.groupId}</groupId><version>${project.version}</version></dependency>
-        <dependency><artifactId>project-ci-deploy-api</artifactId><groupId>${project.groupId}</groupId><version>${project.version}</version></dependency>
+  <properties>
+    <mainClass>org.cleanstack.ci.deploy.App</mainClass>
+  </properties>
+  <dependencies>
 
-        <dependency><artifactId>project-ci-theme-mdl</artifactId><groupId>${project.groupId}</groupId><version>${project.version}</version></dependency>
-        <dependency><artifactId>project-ci-core-webui</artifactId><groupId>${project.groupId}</groupId><version>${project.version}</version></dependency>
-        <dependency><artifactId>project-ci-build-webui</artifactId><groupId>${project.groupId}</groupId><version>${project.version}</version></dependency>
-        <dependency><artifactId>project-ci-deploy-webui</artifactId><groupId>${project.groupId}</groupId><version>${project.version}</version></dependency>
-      </dependencies>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
-    </profile>
-    
-    <profile>
-      <id>fullstack-headless</id>
-      <dependencies>
-        <dependency><artifactId>project-ci-core-api</artifactId><groupId>${project.groupId}</groupId><version>${project.version}</version></dependency>
-        <dependency><artifactId>project-ci-deploy</artifactId><groupId>${project.groupId}</groupId><version>${project.version}</version></dependency>
-      </dependencies>
-    </profile>
-    
-    <profile>
-      <id>project</id>
-    </profile>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>project-ci-core</artifactId>
+      <version>${project.version}</version>
+    </dependency>
 
-    <profile>
-      <id>java</id>
-      <dependencies>
-        <dependency><artifactId>project-ci-deploy-api</artifactId><groupId>${project.groupId}</groupId><version>${project.version}</version></dependency>
-      </dependencies>
-    </profile>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>project-ci-app-components</artifactId>
+      <version>${project.version}</version>
+    </dependency>
 
-    <profile>
-      <id>web</id>
-      <dependencies>
-        <dependency><artifactId>project-ci-deploy-api</artifactId><groupId>${project.groupId}</groupId><version>${project.version}</version></dependency>
-      </dependencies>
-    </profile>
+    <!-- WEBAPP: CONTAINER -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>3.0.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>webjars-servlet-2.x</artifactId>
+      <version>1.5</version>
+    </dependency>
 
-    <profile>
-      <id>net</id>
-      <dependencies>
-        <dependency><artifactId>project-ci-deploy-api</artifactId><groupId>${project.groupId}</groupId><version>${project.version}</version></dependency>
-      </dependencies>
-    </profile>
+  </dependencies>
+  <build>
+    <resources>
+      <!-- WEBAPP: REPLACE KEYS IN FILES (ECLIPSE IDE) -->
+      <resource>
+        <directory>src/main/webapp</directory>
+        <filtering>true</filtering>
+        <targetPath>${project.basedir}/target/m2e-wtp/web-resources</targetPath>
+        <includes>
+          <include>*.html</include>
+        </includes>
+      </resource>
+    </resources>
+    <plugins>
+      <!-- WEBAPP: REPLACE KEYS IN FILES (BUILD) -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.6</version>
+        <configuration>
+          <warName>project-ci</warName>
+          <webResources>
+            <resource>
+              <directory>src/main/webapp</directory>
+              <filtering>true</filtering>
+              <includes>
+                <include>*.html</include>
+              </includes>
+            </resource>
+          </webResources>
+        </configuration>
+      </plugin>
 
-  </profiles>
+      <!-- APP: Make this jar executable -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.0.2</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>${mainClass}</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+      <!-- APP: Includes the runtime dependencies -->
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>${mainClass}</mainClass>
+            </manifest>
+          </archive>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+        </configuration>
+      </plugin>
+      <!-- APP: exec via maven -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.4.0</version>
+        <executions>
+          <execution>
+            <phase>deploy</phase>
+            <goals>
+              <goal>java</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <mainClass>${mainClass}</mainClass>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>
