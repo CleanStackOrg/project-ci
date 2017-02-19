@@ -10,17 +10,17 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>8</java.version>
+    <jetty.version>9.4.1.v20170120</jetty.version>
   </properties>
 
   <modules>
 
     <!-- CORE -->
-    <module>module-core</module>
-    <module>module-theme-mdl</module>
+    <module>module-war</module>
+    <!-- <module>module-core</module> <module>module-theme-mdl</module> -->
 
     <!-- COMPONENTS -->
-    <module>module-cli</module>
-    <module>module-ansible-emulator</module>
+    <!-- <module>module-cli</module> <module>module-ansible-emulator</module> -->
     <!-- <module>module-ansible</module> -->
     <!-- <module>module-java</module> -->
     <!-- <module>module-maven</module> -->
@@ -32,8 +32,7 @@
     <!-- <module>module-ant</module> -->
 
     <!-- APP -->
-    <module>module-app-components</module>
-    <module>module-app</module>
+    <!-- <module>module-app-components</module> <module>module-app</module> -->
   </modules>
   <dependencies>
     <!-- TEST -->
@@ -48,6 +47,11 @@
       <artifactId>assertj-core</artifactId>
       <version>3.5.1</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.jayway.awaitility</groupId>
+      <artifactId>awaitility</artifactId>
+      <version>1.7.0</version>
     </dependency>
   </dependencies>
   <build>
