@@ -1,6 +1,6 @@
 package org.cleanstack;
 
-import static com.jayway.awaitility.Awaitility.await;
+import static org.cleanstack.common.Throwables.propagate;
 
 import java.io.IOException;
 import java.util.logging.Logger;
@@ -12,8 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.AbstractHandler;
-
-import com.jayway.awaitility.Awaitility;
 
 public class EmbeddedServer implements Runnable {
   private final static Logger log = Logger.getLogger(EmbeddedServer.class.getName());
@@ -37,11 +35,8 @@ public class EmbeddedServer implements Runnable {
       server.start();
       server.join();
     } catch (Exception e) {
-      throw new RuntimeException(e);
+      throw propagate(e);
     }
-    await("server isStarted") //
-        .until(() -> server.getServer() //
-            .isStarted());
   }
 
   public void stop() {
@@ -49,7 +44,7 @@ public class EmbeddedServer implements Runnable {
     try {
       server.stop();
     } catch (Exception e) {
-      throw new RuntimeException(e);
+      throw propagate(e);
     }
   }
 

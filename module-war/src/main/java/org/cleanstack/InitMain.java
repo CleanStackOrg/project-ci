@@ -1,6 +1,6 @@
 package org.cleanstack;
 
-public class Runner {
+public class InitMain {
 
 	public static void main(String[] args) throws Exception {
 		// if() {
