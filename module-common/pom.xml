@@ -5,10 +5,10 @@
   <parent>
     <groupId>org.cleanstack.ci</groupId>
     <version>0.0.1-SNAPSHOT</version>
-    <artifactId>project-ci</artifactId>
+    <artifactId>cleanstack</artifactId>
   </parent>
 
-  <artifactId>project-ci-common</artifactId>
+  <artifactId>cleanstack-common</artifactId>
   <packaging>jar</packaging>
 
 </project>
