@@ -6,13 +6,17 @@ import javax.servlet.http.HttpServletResponse;
 
 public class InitServlet extends HttpServlet {
 
-  public void init() {
-    String cheminWebApp = getServletContext().getRealPath("/");
-    System.setProperty("cheminWebApp", cheminWebApp);
+    private static final long serialVersionUID = -4865940183647424756L;
 
-  }
+    @Override
+    public void init() {
+	String cheminWebApp = getServletContext().getRealPath("/");
+	System.setProperty("cheminWebApp", cheminWebApp);
 
-  public void doGet(HttpServletRequest req, HttpServletResponse res) {
-    System.out.println("salut!");
-  }
+    }
+
+    @Override
+    public void doGet(HttpServletRequest req, HttpServletResponse res) {
+	System.out.println("salut!");
+    }
 }

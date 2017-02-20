@@ -14,50 +14,52 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.AbstractHandler;
 
 public class EmbeddedServer implements Runnable {
-  private final static Logger log = Logger.getLogger(EmbeddedServer.class.getName());
 
-  private Server server;
-  private Thread serverThread;
+    private final static Logger log = Logger.getLogger(EmbeddedServer.class.getName());
 
-  public EmbeddedServer(int port) {
-    server = new Server(port);
-    server.setHandler(new ServerHandler());
-    serverThread = new Thread(this);
-  }
+    private Server server;
+    private Thread serverThread;
 
-  public void start() {
-    serverThread.start();
-  }
-
-  public void run() {
-    log.info("EmbeddedServer starting");
-    try {
-      server.start();
-      server.join();
-    } catch (Exception e) {
-      throw propagate(e);
+    public EmbeddedServer(int port) {
+	server = new Server(port);
+	server.setHandler(new ServerHandler());
+	serverThread = new Thread(this);
     }
-  }
 
-  public void stop() {
-    log.info("EmbeddedServer stopping");
-    try {
-      server.stop();
-    } catch (Exception e) {
-      throw propagate(e);
+    public void start() {
+	serverThread.start();
     }
-  }
-
-  static class ServerHandler extends AbstractHandler {
 
     @Override
-    public void handle(String target, Request baseRequest, HttpServletRequest request, HttpServletResponse response)
-        throws IOException, ServletException {
-      response.setContentType("text/html;charset=utf-8");
-      response.setStatus(HttpServletResponse.SC_OK);
-      baseRequest.setHandled(true);
-      response.getWriter().println("<h1>Hello World 4</h1>");
+    public void run() {
+	log.info("EmbeddedServer starting");
+	try {
+	    server.start();
+	    server.join();
+	} catch (Exception e) {
+	    throw propagate(e);
+	}
     }
-  }
+
+    public void stop() {
+	log.info("EmbeddedServer stopping");
+	try {
+	    server.stop();
+	} catch (Exception e) {
+	    throw propagate(e);
+	}
+    }
+
+    static class ServerHandler extends AbstractHandler {
+
+	@Override
+	public void handle(String target, Request baseRequest, HttpServletRequest request, HttpServletResponse response)
+	        throws IOException, ServletException {
+	    response.setContentType("text/html;charset=utf-8");
+	    response.setStatus(HttpServletResponse.SC_OK);
+	    baseRequest.setHandled(true);
+	    response.getWriter().println("<h1>Hello World 4</h1>");
+	}
+    }
 
 }
