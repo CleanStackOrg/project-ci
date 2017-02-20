@@ -21,6 +21,7 @@ public class EmbeddedServer implements Runnable {
     private Thread serverThread;
 
     public EmbeddedServer(int port) {
+	log.info("EmbeddedServer using port " + port);
 	server = new Server(port);
 	server.setHandler(new ServerHandler());
 	serverThread = new Thread(this);
@@ -58,7 +59,7 @@ public class EmbeddedServer implements Runnable {
 	    response.setContentType("text/html;charset=utf-8");
 	    response.setStatus(HttpServletResponse.SC_OK);
 	    baseRequest.setHandled(true);
-	    response.getWriter().println("<h1>Hello World 4</h1>");
+	    response.getWriter().println(Manager.init());
 	}
     }
 

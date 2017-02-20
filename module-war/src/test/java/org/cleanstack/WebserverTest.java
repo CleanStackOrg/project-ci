@@ -1,6 +1,8 @@
 package org.cleanstack;
 
 import static com.jayway.restassured.RestAssured.expect;
+import static java.lang.String.valueOf;
+import static org.hamcrest.Matchers.containsString;
 
 import java.io.File;
 
@@ -17,27 +19,26 @@ public class WebserverTest {
     @Test
     public void test_embedded_server_start_stop() throws Exception {
 	int PORT = 8081;
-
-	EmbeddedServer server;
-	server = new EmbeddedServer(PORT);
-	server.start();
+	InitCommand.main(new String[] { //
+	        "start", //
+	        "-httpPort", valueOf(PORT) });
 
 	RestAssured.port = PORT;
 	expect().statusCode(200) //
+	        .content(containsString("Hello")) //
 	        .when().get("/");
-	server.stop();
+	InitCommand.main(new String[] { "stop" });
     }
 
     @Test
     public void test_webapp_on_server_start_stop() throws Exception {
 	int PORT = 8082;
-
 	TomcatServer server;
 	server = new TomcatServer(PORT, "/");
 	server.start();
 
 	RestAssured.port = PORT;
-	expect().statusCode(200) //
+	expect().statusCode(200).content(containsString("Hello")) //
 	        .when().get("/");
 	server.stop();
     }
@@ -53,7 +54,6 @@ public class WebserverTest {
 	    tomcat.setBaseDir("target/tomcat");
 	    tomcat.addWebapp(contextPath, new File("src/main/webapp").getAbsolutePath());
 	    serverThread = new Thread(this);
-
 	}
 
 	public void start() {
