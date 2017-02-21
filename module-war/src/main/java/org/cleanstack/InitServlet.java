@@ -15,9 +15,15 @@ public class InitServlet extends HttpServlet {
 
     @Override
     public void init() {
+	System.out.println("Initializing MAIN Servlet");
 	String cheminWebApp = getServletContext().getRealPath("/");
 	System.setProperty("cheminWebApp", cheminWebApp);
 
+    }
+
+    @Override
+    public void destroy() {
+	System.out.println("Destroying MAIN Servlet");
     }
 
     @Override

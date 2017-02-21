@@ -15,6 +15,7 @@ public class InitCommand {
 	    server.start();
 	} else if ("stop".equals(cmd)) {
 	    server.stop();
+	    System.out.println(Manager.init());
 	}
     }
 }

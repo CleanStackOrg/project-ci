@@ -1,8 +1,10 @@
 package org.cleanstack;
 
+import static com.jayway.awaitility.Awaitility.await;
 import static com.jayway.restassured.RestAssured.expect;
-import static java.lang.String.valueOf;
+import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.hamcrest.Matchers.containsString;
+import static org.springframework.util.SocketUtils.findAvailableTcpPort;
 
 import java.io.File;
 
@@ -14,32 +16,18 @@ import org.junit.Test;
 
 import com.jayway.restassured.RestAssured;
 
-public class WebserverTest {
+public class RunServerDeployedTest {
 
     @Test
-    public void test_embedded_server_start_stop() throws Exception {
-	int PORT = 8081;
-	InitCommand.main(new String[] { //
-	        "start", //
-	        "-httpPort", valueOf(PORT) });
-
-	RestAssured.port = PORT;
-	expect().statusCode(200) //
-	        .content(containsString("Hello")) //
-	        .when().get("/");
-	InitCommand.main(new String[] { "stop" });
-    }
-
-    @Test
-    public void test_webapp_on_server_start_stop() throws Exception {
+    public void test() throws Exception {
 	int PORT = 8082;
 	TomcatServer server;
 	server = new TomcatServer(PORT, "/");
 	server.start();
+	await().atMost(10, SECONDS).until(() -> findAvailableTcpPort(PORT));
 
 	RestAssured.port = PORT;
-	expect().statusCode(200).content(containsString("Hello")) //
-	        .when().get("/");
+	expect().statusCode(200).content(containsString("Hello")).when().get("/");
 	server.stop();
     }
 
