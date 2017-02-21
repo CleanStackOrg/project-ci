@@ -10,8 +10,6 @@ public class InitCommand {
 	String cmd = args[0];
 	int port = new Arguments(args).getArgumentInteger("httpPort", 8080);
 
-	new LoggerConfiguration();
-
 	if ("start".equals(cmd)) {
 	    server = new EmbeddedServer(port);
 	    server.start();

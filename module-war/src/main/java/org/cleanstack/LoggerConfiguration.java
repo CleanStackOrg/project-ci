@@ -9,7 +9,7 @@ public class LoggerConfiguration {
     private static final LogManager logManager = LogManager.getLogManager();
 
     static {
-	System.out.println("h�");
+	System.out.println("LoggerConfiguration start");
 	try {
 	    InputStream inputStream = ClassLoader.class.getResourceAsStream("/logger.properties");
 
