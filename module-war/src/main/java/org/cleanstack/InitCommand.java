@@ -11,10 +11,14 @@ public class InitCommand {
 	int port = new Arguments(args).getArgumentInteger("httpPort", 8080);
 
 	if ("start".equals(cmd)) {
+	    System.out.println("Starting Embedded server");
 	    server = new EmbeddedServer(port);
 	    server.start();
 	} else if ("stop".equals(cmd)) {
+	    System.out.println("Stopping Embedded server");
 	    server.stop();
+	} else if ("batch".equals(cmd)) {
+	    System.out.println("starting Batch");
 	    System.out.println(Manager.init());
 	}
     }

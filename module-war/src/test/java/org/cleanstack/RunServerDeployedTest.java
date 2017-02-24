@@ -4,7 +4,6 @@ import static com.jayway.awaitility.Awaitility.await;
 import static com.jayway.restassured.RestAssured.expect;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.hamcrest.Matchers.containsString;
-import static org.springframework.util.SocketUtils.findAvailableTcpPort;
 
 import java.io.File;
 
@@ -12,6 +11,7 @@ import javax.servlet.ServletException;
 
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.startup.Tomcat;
+import org.cleanstack.common.SocketUtils;
 import org.junit.Test;
 
 import com.jayway.restassured.RestAssured;
@@ -24,10 +24,17 @@ public class RunServerDeployedTest {
 	TomcatServer server;
 	server = new TomcatServer(PORT, "/");
 	server.start();
-	await().atMost(10, SECONDS).until(() -> findAvailableTcpPort(PORT));
+	await() //
+	        .atMost(4, SECONDS) //
+	        .pollDelay(1, SECONDS) //
+	        .until(() -> SocketUtils //
+	                .findAvailableTcpPort(PORT));
 
 	RestAssured.port = PORT;
-	expect().statusCode(200).content(containsString("Hello")).when().get("/");
+	expect() //
+	        .statusCode(200) //
+	        .content(containsString("Hello")) //
+	        .when().get("/");
 	server.stop();
     }
 
